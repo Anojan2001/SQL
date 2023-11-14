@@ -55,3 +55,48 @@ VALUES
     ('Company II', 'Telecommunications', 110.5, 2000, 1, 21, 12, 4.9),
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
+
+#Assign all the companies in the Technology industry as 'Employee Friendly','Acceptable', or 'Unacceptable a
+based on the paid_time_off_days offered
+
+SELECT industry,company_name,
+CASE WHEN paid_time_off_days>=21 THEN 'Employee Friendly'
+ WHEN paid_time_off_days>=16 THEN 'Acceptable'
+ ELSE 'Unacceptable'
+ END AS Employee_timeoff
+ FROM fortune_companies
+ WHERE industry='Technology'
+ ORDER BY Employee_timeoff
+ 
+
+
+#Which industries have over 30,000 employess and what are total numbe of employees for those industries 
+SELECT industry,SUM(employees) as total_employees
+FROM fortune_companies
+GROUP BY industry
+HAVING total_employees>=30000
+
+
+
+#What companies have an avg_employee_tenure under 5 and
+paid_time_off_days over 21
+SELECT company_name
+FROM fortune_companies
+WHERE avg_employee_tenure<=5 AND paid_time_off_days>=21
+
+
+
+#What industries have and average revenue of over $250 billion and has healthcare benfits
+SELECT industry,ROUND(AVG(revenue),1) as average_revenue,healthcare_benefits
+FROM fortune_companies
+GROUP by industry
+HAVING average_revenue>=250 and healthcare_benefits=1
+
+
+
+#What companies have healthcare benefits, paid_time_off_days over 21days and maternity_leave_weeks 
+over 10.
+SELECT company_name,paid_time_off_days,maternity_leave_weeks,healthcare_benefits
+FROM fortune_companies
+WHERE healthcare_benefits=1 AND paid_time_off_days>=21 and maternity_leave_weeks>=10
+
