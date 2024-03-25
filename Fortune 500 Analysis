@@ -86,7 +86,7 @@ WHERE avg_employee_tenure<=5 AND paid_time_off_days>=21
 
 
 
-#What industries have and average revenue of over $250 billion and has healthcare benfits
+#What industries have an average revenue of over $250 billion and has healthcare benfits
 SELECT industry,ROUND(AVG(revenue),1) as average_revenue,healthcare_benefits
 FROM fortune_companies
 GROUP by industry
