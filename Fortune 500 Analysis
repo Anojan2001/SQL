@@ -56,8 +56,8 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
-#Assign all the companies in the Technology industry as 'Employee Friendly','Acceptable', or 'Unacceptable a
-based on the paid_time_off_days offered
+#Assign all the companies in the Technology industry as 'Employee Friendly','Acceptable', or 'Unacceptable'
+based on the paid_time_off_days 
 
 SELECT industry,company_name,
 CASE WHEN paid_time_off_days>=21 THEN 'Employee Friendly'
@@ -70,7 +70,7 @@ CASE WHEN paid_time_off_days>=21 THEN 'Employee Friendly'
  
 
 
-#Which industries have over 30,000 employess and what are total numbe of employees for those industries 
+#Which industries have over 30,000 employess and what are the total number of employees for those industries 
 SELECT industry,SUM(employees) as total_employees
 FROM fortune_companies
 GROUP BY industry
